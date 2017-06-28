@@ -6,8 +6,8 @@
     	<Import assembly="XamlStyler.XamarinStudio.dll"/>
 	</Runtime>
 	<Dependencies>
-		<Addin id="::MonoDevelop.Core" version="6.0" />
-		<Addin id="::MonoDevelop.Ide" version="6.0" />
+		<Addin id="::MonoDevelop.Core" version="7.0" />
+		<Addin id="::MonoDevelop.Ide" version="7.0" />
 		<Addin id="::MonoDevelop.SourceEditor2" version="5.0" />
 	</Dependencies>
 	<Extension path="/MonoDevelop/Ide/Commands/Edit">
