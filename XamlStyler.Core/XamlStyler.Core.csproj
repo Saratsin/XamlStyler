@@ -107,6 +107,8 @@
     <Compile Include="Extensions\StringBuilderExtensions.cs" />
     <Compile Include="StylerService.cs" />
     <Compile Include="Services\XmlEscapingService.cs" />
+    <Compile Include="Options\StylerTarget.cs" />
+    <Compile Include="Options\StylerTargetsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />

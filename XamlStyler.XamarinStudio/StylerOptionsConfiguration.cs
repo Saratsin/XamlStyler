@@ -8,9 +8,9 @@ namespace Xavalon.XamlStyler.XamarinStudio
 {
 	public static class StylerOptionsConfiguration
 	{
-		public static StylerOptions ReadFromUserProfile()
+		public static StylerOptions ReadFromUserProfile(IConfig config)
 		{
-			var filePath = GetOptionsFilePath().ToString();
+			var filePath = GetOptionsFilePath(config).ToString();
 
 			try
 			{
@@ -28,32 +28,15 @@ namespace Xavalon.XamlStyler.XamarinStudio
 				File.Delete(filePath);
 			}
 
-			// Xamarin Forms defaults
-			var options = new StylerOptions()
-			{
-				IndentSize = 4,
-			};
-
-			try
-			{
-				// update attribute ordering to include Forms attrs
-				options.AttributeOrderingRuleGroups[6] += ", WidthRequest, HeightRequest";
-				options.AttributeOrderingRuleGroups[7] += ", HorizontalOptions, VerticalOptions, XAlign, VAlign";
-			}
-			catch (Exception ex)
-			{
-				LoggingService.LogError("Exception when updating default options to include Xamarin Forms attributes", ex);
-			}
-
-			return options;
+			return config.DefaultOptions;
 		}
 
-		public static void WriteToUserProfile(StylerOptions options)
+		public static void WriteToUserProfile(StylerOptions options, IConfig config)
 		{
 			try
 			{
 				var text = JsonConvert.SerializeObject(options);
-				File.WriteAllText(GetOptionsFilePath().ToString(), text);
+				File.WriteAllText(GetOptionsFilePath(config).ToString(), text);
 			}
 			catch (Exception ex)
 			{
@@ -61,14 +44,14 @@ namespace Xavalon.XamlStyler.XamarinStudio
 			}
 		}
 
-		public static void Reset()
+		public static void Reset(IConfig config)
 		{
-			File.Delete(GetOptionsFilePath().ToString());
+			File.Delete(GetOptionsFilePath(config).ToString());
 		}
 
-		private static FilePath GetOptionsFilePath()
+		private static FilePath GetOptionsFilePath(IConfig config)
 		{
-			return UserProfile.Current.ConfigDir.Combine("xamlstyler.config");
+			return UserProfile.Current.ConfigDir.Combine(config.PreferencesFilename);
 		}
 	}
 }

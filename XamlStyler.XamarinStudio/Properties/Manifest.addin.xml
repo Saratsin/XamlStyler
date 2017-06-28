@@ -16,19 +16,43 @@
 	<Extension path="/MonoDevelop/Ide/Commands/Edit">
 		<Command id="Xavalon.XamlStyler.XamarinStudio.FormatXamlBatch" _label="Batch Format Xaml" _description="Reformats all XAML documents to be much more readable" defaultHandler="Xavalon.XamlStyler.XamarinStudio.FormatXamlBatchHandler" shortcut="Ctrl|Shift|I" />
 	</Extension>
+
+	<Extension path="/MonoDevelop/Ide/Commands/Edit">
+		<Command id="Xavalon.XamlStyler.XamarinStudio.FormatAxml" _label="Format Axml" _description="Reformats the Android AXML document to be much more readable" defaultHandler="Xavalon.XamlStyler.XamarinStudio.FormatAxmlHandler" shortcut="Ctrl|Alt|I" />
+	</Extension>
+	<Extension path="/MonoDevelop/Ide/Commands/Edit">
+		<Command id="Xavalon.XamlStyler.XamarinStudio.FormatAxmlBatch" _label="Batch Format Axml" _description="Reformats all Android AXML documents to be much more readable" defaultHandler="Xavalon.XamlStyler.XamarinStudio.FormatAxmlBatchHandler" shortcut="Ctrl|Alt|I" />
+	</Extension>
 	<Extension path="/MonoDevelop/SourceEditor2/ContextMenu/Editor">
         <CommandItem id="Xavalon.XamlStyler.XamarinStudio.FormatXaml" />
+	</Extension>
+	<Extension path="/MonoDevelop/SourceEditor2/ContextMenu/Editor">
+        <CommandItem id="Xavalon.XamlStyler.XamarinStudio.FormatAxml" />
 	</Extension>
 	<Extension path="/MonoDevelop/Ide/ContextMenu/ProjectPad">
 		<Condition id="ItemType" value="Project|Solution">
 			<CommandItem id="Xavalon.XamlStyler.XamarinStudio.FormatXamlBatch" />
 		</Condition>
+		<Condition id="ItemType" value="Project|Solution">
+			<CommandItem id="Xavalon.XamlStyler.XamarinStudio.FormatAxmlBatch" />
+		</Condition>
 	</Extension>
 	<Extension path="/MonoDevelop/Ide/GlobalOptionsDialog/Other">
 		<Section
-			id="XamlStylerOptions"
+			id="XamlStylerMain"
 			_label="XamlStyler Options"
 			fill="true"
-			class="Xavalon.XamlStyler.XamarinStudio.Gui.XamlStylerOptionsPanel" />
+			class="Xavalon.XamlStyler.XamarinStudio.Gui.MainOptionsPanel">
+			<Section
+				id="XamlStylerOptions"
+				_label="Xamarin Forms"
+				fill="true"
+				class="Xavalon.XamlStyler.XamarinStudio.Gui.XamlStylerOptionsPanel" />
+			<Section
+				id="AndroidAxmlStylerOptions"
+				_label="Android"
+				fill="true"
+				class="Xavalon.XamlStyler.XamarinStudio.Gui.AndroidStylerOptionsPanel" />
+		</Section>
 	</Extension>
 </ExtensionModel>

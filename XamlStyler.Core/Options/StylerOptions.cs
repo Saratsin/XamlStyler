@@ -199,18 +199,21 @@ Default = use same rules as other elements")]
         public LineBreakRule RootElementLineBreakRule { get; set; }
 
         // Element reordering
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Element Reordering")]
         [DisplayName("Reorder Grid panel children by row/column")]
         [Description("Defines whether to reorder the children of a Grid by row/column. When this is true, children will be reordered in an ascending fashion by looking at their attached Grid properties: first by Grid.Row, then by Grid.Column.")]
         [DefaultValue(true)]
         public bool ReorderGridChildren { get; set; }
 
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Element Reordering")]
         [DisplayName("Reorder Canvas panel children by left/top/right/bottom")]
         [Description("Defines whether to reorder the children of a Canvas by left/top/right/bottom.  When this is true, children will be reordered in an ascending fashion by looking at their attached Canvas properties: first by Canvas.Left, then by Canvas.Top, then by Canvas.Right, then by Canvas.Bottom.")]
         [DefaultValue(true)]
         public bool ReorderCanvasChildren { get; set; }
 
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Element Reordering")]
         [DisplayName("Reorder Setters by")]
         [Description("Defines whether to reorder 'Setter' elements in style/trigger elements. When this is set, children will be reordered in an ascending fashion by looking at their Property and/or TargetName properties")]
@@ -218,6 +221,7 @@ Default = use same rules as other elements")]
         public ReorderSettersBy ReorderSetters { get; set; }
 
         // Markup Extension
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Markup Extension")]
         [DisplayName("Enable Markup Extension Formatting")]
         [Description(@"Defines whether to format markup extensions (attributes containing '{}').
@@ -226,6 +230,7 @@ When this setting is true, attributes with markup extensions will always be put 
         [DefaultValue(true)]
         public bool FormatMarkupExtension { get; set; }
 
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Markup Extension")]
         [DisplayName("Keep Markup Extensions of these types on one line")]
         [Description("Defines a comma separated list of Markup Extensions that are always kept on one line")]
@@ -233,12 +238,14 @@ When this setting is true, attributes with markup extensions will always be put 
         public string NoNewLineMarkupExtensions { get; set; }
 
         // Thickness formatting
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Thickness formatting")]
         [DisplayName("Thickness style")]
         [Description("Defines how Thickness properties like Margin, Padding etc. should be formatted")]
         [DefaultValue(ThicknessStyle.None)]
         public ThicknessStyle ThicknessStyle { get; set; }
 
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Thickness formatting")]
         [DisplayName("Thickness attributes")]
         [Description("Defines a list of all the attributes that gets reformatted if content looks like a thickness")]
@@ -246,6 +253,7 @@ When this setting is true, attributes with markup extensions will always be put 
         public string ThicknessAttributes { get; set; }
 
         // Misc
+		[StylerTargets(StylerTarget.XamarinFormsXaml)]
         [Category("Misc")]
         [DisplayName("Beautify on saving XAML")]
         [Description("Defines whether to automatically beautify the active XAML document while saving.")]

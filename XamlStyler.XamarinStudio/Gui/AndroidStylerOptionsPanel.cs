@@ -2,9 +2,9 @@
 
 namespace Xavalon.XamlStyler.XamarinStudio.Gui
 {
-	public class XamlStylerOptionsPanel : OptionsPanel
+	public class AndroidStylerOptionsPanel : OptionsPanel
 	{
-		private OptionsViewModel _optionsViewModel = new OptionsViewModel(new XamarinFormsConfig());
+		private OptionsViewModel _optionsViewModel = new OptionsViewModel(new AndroidAxmlConfig());
 
 		public override MonoDevelop.Components.Control CreatePanelWidget()
 		{
