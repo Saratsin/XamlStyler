@@ -2,7 +2,7 @@
 
 using Irony.Parsing;
 using NUnit.Framework;
-using Xavalon.XamlStyler.Core.MarkupExtensions.Parser;
+using Xavalon.XamlStyler.MarkupExtensions.Parser;
 
 namespace Xavalon.XamlStyler.UnitTests.MarkupExtensions
 {
