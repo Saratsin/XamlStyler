@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using Xavalon.XamlStyler.Options;
 
-namespace Xavalon.XamlStyler.Package
+namespace Xavalon.XamlStyler.Extension.Windows
 {
     public class PackageOptions : DialogPage
     {

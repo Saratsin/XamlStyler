@@ -1,4 +1,4 @@
-﻿namespace Xavalon.XamlStyler.Package
+﻿namespace Xavalon.XamlStyler.Extension.Windows
 {
     internal static class PackageCommandIds
     {
