@@ -16,16 +16,16 @@ namespace Xavalon.XamlStyler.Xmagic
 
             result.WithNotParsed(_ =>
             {
-                Xmagic.WriteLine(writer.ToString());
+                Console.WriteLine(writer.ToString());
                 Environment.Exit(1);
             })
             .WithParsed(options =>
             {
                 if (options.LogLevel >= LogLevel.Debug)
                 {
-                    Xmagic.WriteLine($"File Parameter: '{options.File}'");
-                    Xmagic.WriteLine($"File Count: {options.File?.Count ?? -1}");
-                    Xmagic.WriteLine($"File Directory: '{options.Directory}'");
+                    Console.WriteLine($"File Parameter: '{options.File}'");
+                    Console.WriteLine($"File Count: {options.File?.Count ?? -1}");
+                    Console.WriteLine($"File Directory: '{options.Directory}'");
                 }
 
                 bool isFileOptionSpecified = ((options.File?.Count ?? 0) != 0);
@@ -42,7 +42,7 @@ namespace Xavalon.XamlStyler.Xmagic
                         ? "Cannot specify both file(s) and directory"
                         : "Must specify file(s) or directory";
 
-                    Xmagic.WriteLine($"\nError: {errorString}\n");
+                    Console.WriteLine($"\nError: {errorString}\n");
                 }
             });
         }

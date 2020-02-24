@@ -4,6 +4,7 @@ using MonoDevelop.Projects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xavalon.XamlStyler.Extension.Common;
 
 namespace Xavalon.XamlStyler.Extension.Mac.Services.XamlFiles
 {

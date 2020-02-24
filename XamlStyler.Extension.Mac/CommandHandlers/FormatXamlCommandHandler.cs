@@ -9,8 +9,8 @@ namespace Xavalon.XamlStyler.Extension.Mac.CommandHandlers
 {
     public class FormatXamlCommandHandler : CommandHandler
     {
-        private IXamlFormattingService XamlFormattingService => Container.Instance.Resolve<IXamlFormattingService>();
-        private IXamlStylerOptionsService XamlStylerOptionsService => Container.Instance.Resolve<IXamlStylerOptionsService>();
+        private IXamlFormattingService XamlFormattingService => ExtensionApp.Container.Resolve<IXamlFormattingService>();
+        private IXamlStylerOptionsService XamlStylerOptionsService => ExtensionApp.Container.Resolve<IXamlStylerOptionsService>();
 
         protected override void Run()
         {

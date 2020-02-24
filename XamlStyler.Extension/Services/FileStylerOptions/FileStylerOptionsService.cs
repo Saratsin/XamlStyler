@@ -1,69 +1,47 @@
-﻿// © Xavalon. All rights reserved.
-
-using MonoDevelop.Core;
-using MonoDevelop.Ide.Gui;
-using MonoDevelop.Projects;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
+using System.Linq.Expressions;
+using Xavalon.XamlStyler.Extension.Common;
+using Xavalon.XamlStyler.Extension.Services.Platform;
 using Xavalon.XamlStyler.Options;
-using Xavalon.XamlStyler.Extension.Mac.Converters;
-using Xavalon.XamlStyler.Extension.Mac.Utils;
 
-namespace Xavalon.XamlStyler.Extension.Mac.Services.XamlStylerOptions
+namespace Xavalon.XamlStyler.Extension.Services
 {
-    public class XamlStylerOptionsService : IXamlStylerOptionsService
+    public class FileStylerOptionsService : IFileStylerOptionsService
     {
-        private const string OptionsFileName = "Settings.XamlStyler";
+        private readonly IGlobalStylerOptionsService _globalStylerOptionsService;
 
-        private string GlobalOptionsFilePath => UserProfile.Current.ConfigDir.Combine(OptionsFileName).FullPath;
-
-        public IStylerOptions GetGlobalOptions()
+        public FileStylerOptionsService(IGlobalStylerOptionsService globalStylerOptionsService)
         {
-            var defaultGlobalOptions = new StylerOptions
-            {
-                // TODO Check info about IndentSize, is it necessary
-                IndentSize = 4
-            };
-
-            var globalOptions = ParseOptionsOrDefault(GlobalOptionsFilePath, defaultGlobalOptions, new GlobalOptionsJsonConverter());
-            return globalOptions;
+            _globalStylerOptionsService = globalStylerOptionsService;
         }
 
-        public void SaveGlobalOptions(IStylerOptions options)
+        public IStylerOptions GetStylerOptions(string xamlFilePath, string solutionFilePath)
         {
-            try
+            if (xamlFilePath is null)
             {
-                var fileData = JsonConvert.SerializeObject(options, new GlobalOptionsJsonConverter());
-                File.WriteAllText(GlobalOptionsFilePath, fileData);
+                throw new ArgumentException(nameof(xamlFilePath));
             }
-            catch (Exception ex)
+
+            if (Path.GetExtension(xamlFilePath) != Constants.XamlFileExtension)
             {
-                LoggingService.LogError("Failed to save Global XamlStyler options", ex);
+                throw new ArgumentException($"File other than {Constants.XamlFileExtension} extension", nameof(xamlFilePath));
             }
-        }
 
-        public void ResetGlobalOptions()
-        {
-            File.Delete(GlobalOptionsFilePath);
-        }
+            if (solutionFilePath is null)
+            {
+                throw new ArgumentNullException(nameof(solutionFilePath));
+            }
 
-        public IStylerOptions GetDocumentOptions(Document document)
-        {
-            var documentFilePath = document?.FilePath.ToString();
-            var project = document?.Owner as Project;
-            var solution = project?.ParentSolution;
-
-            return GetDocumentOptions(documentFilePath, solution);
-        }
-
-        public IStylerOptions GetDocumentOptions(string documentFilePath, Solution solution)
-        {
-            var globalOptions = GetGlobalOptions();
-            if (string.IsNullOrEmpty(documentFilePath) || solution is null)
+            var globalOptions = _globalStylerOptionsService.GetGlobalOptions();
+            var solutionFolderPath = Path.GetDirectoryName(solutionFilePath);
+            var isFileInSolutionFolder = xamlFilePath.StartsWith(solutionFolderPath, StringComparison.OrdinalIgnoreCase);
+            if (!isFileInSolutionFolder)
             {
                 return globalOptions;
             }
+
+            
 
             var optionsRootFolder = solution.FileName.ParentDirectory;
             if (globalOptions.SearchToDriveRoot)
@@ -73,7 +51,7 @@ namespace Xavalon.XamlStyler.Extension.Mac.Services.XamlStylerOptions
 
             var optionsRootFolderPath = optionsRootFolder.ToString();
 
-            var firstOptionsFilePath = GetFirstOptionsFilePathOrDefault(documentFilePath, optionsRootFolderPath);
+            var firstOptionsFilePath = GetFirstOptionsFilePathOrDefault(xamlFilePath, optionsRootFolderPath);
             if (!string.IsNullOrEmpty(firstOptionsFilePath))
             {
                 var firstOptions = ParseOptionsOrDefault(firstOptionsFilePath, globalOptions);
@@ -124,6 +102,20 @@ namespace Xavalon.XamlStyler.Extension.Mac.Services.XamlStylerOptions
 
         private string GetFirstOptionsFilePathOrDefault(string documentFilePath, string rootPath)
         {
+            var configPath = default(string);
+
+            var currentFolder = Path.GetDirectoryName(documentFilePath);
+            var currentConfigPath = Path.Combine(currentFolder, Constants.OptionsFileName);
+            
+            while (!)
+            {
+
+            }
+
+
+            goto start;
+
+
             var currentDirectory = Path.GetDirectoryName(documentFilePath);
             var currentParentDirectory = Path.GetDirectoryName(currentDirectory);
             var currentConfigPath = Path.Combine(currentDirectory, OptionsFileName);

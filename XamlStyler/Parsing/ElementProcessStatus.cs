@@ -1,6 +1,6 @@
 ﻿// © Xavalon. All rights reserved.
 
-namespace Xavalon.XamlStyler.Parser
+namespace Xavalon.XamlStyler.Parsing
 {
     public class ElementProcessStatus
     {

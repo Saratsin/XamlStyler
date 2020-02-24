@@ -16,9 +16,9 @@ namespace Xavalon.XamlStyler.Extension.Mac.CommandHandlers
 {
     public class BatchFormatXamlCommandHandler : CommandHandler
     {
-        private IXamlFilesService XamlFilesService => Container.Instance.Resolve<IXamlFilesService>();
-        private IXamlStylerOptionsService XamlStylerOptionsService => Container.Instance.Resolve<IXamlStylerOptionsService>();
-        private IXamlFormattingService XamlFormattingService => Container.Instance.Resolve<IXamlFormattingService>();
+        private IXamlFilesService XamlFilesService => ExtensionApp.Container.Resolve<IXamlFilesService>();
+        private IXamlStylerOptionsService XamlStylerOptionsService => ExtensionApp.Container.Resolve<IXamlStylerOptionsService>();
+        private IXamlFormattingService XamlFormattingService => ExtensionApp.Container.Resolve<IXamlFormattingService>();
 
         protected override void Run()
         {
@@ -39,6 +39,7 @@ namespace Xavalon.XamlStyler.Extension.Mac.CommandHandlers
                     var solutionFiles = XamlFilesService.FindAllXamlFilePaths(solution);
                     return solutionFiles;
                 case Project project:
+                    project.Files
                     var projectFiles = XamlFilesService.FindAllXamlFilePaths(project);
                     return projectFiles;
                 default:

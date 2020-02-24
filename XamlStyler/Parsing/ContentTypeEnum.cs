@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Xavalon.XamlStyler.Parser
+namespace Xavalon.XamlStyler.Parsing
 {
     [Flags]
     public enum ContentTypes

@@ -1,8 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Xavalon.XamlStyler.Extension</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamlStyler\XamlStyler.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ioc\" />
+    <Folder Include="Common\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Platform\" />
+    <Folder Include="Services\FileStylerOptions\" />
   </ItemGroup>
 </Project>

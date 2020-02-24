@@ -4,7 +4,7 @@ using System;
 using System.Text;
 using System.Xml;
 using Xavalon.XamlStyler.Extensions;
-using Xavalon.XamlStyler.Parser;
+using Xavalon.XamlStyler.Parsing;
 using Xavalon.XamlStyler.Services;
 
 namespace Xavalon.XamlStyler.DocumentProcessors

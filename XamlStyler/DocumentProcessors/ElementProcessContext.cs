@@ -1,7 +1,7 @@
 // © Xavalon. All rights reserved.
 
 using System.Collections.Generic;
-using Xavalon.XamlStyler.Parser;
+using Xavalon.XamlStyler.Parsing;
 
 namespace Xavalon.XamlStyler.DocumentProcessors
 {

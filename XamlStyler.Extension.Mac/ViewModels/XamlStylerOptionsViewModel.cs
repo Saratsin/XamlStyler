@@ -10,7 +10,7 @@ namespace Xavalon.XamlStyler.Extension.Mac.ViewModels
 {
     public class XamlStylerOptionsViewModel
     {
-        private IXamlStylerOptionsService XamlStylerOptionsService => Container.Instance.Resolve<IXamlStylerOptionsService>();
+        private IXamlStylerOptionsService XamlStylerOptionsService => ExtensionApp.Container.Resolve<IXamlStylerOptionsService>();
 
         public IList<IGrouping<string, XamlStylerOptionViewModel>> GroupedOptions { get; private set; }
 

@@ -5,18 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Xavalon.XamlStyler.Extension.Mac
+namespace Xavalon.XamlStyler.Extension.Ioc
 {
-    public class Container
+    public class Container : IContainer, IContainerRegister
     {
         private readonly Dictionary<Type, Lazy<object>> _storage;
 
-        private Container()
+        public Container()
         {
             _storage = new Dictionary<Type, Lazy<object>>();
         }
-
-        public static Container Instance { get; } = new Container();
 
         public IInstance Resolve<IInstance>()
         {

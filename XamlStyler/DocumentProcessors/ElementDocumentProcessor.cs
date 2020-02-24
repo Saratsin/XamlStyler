@@ -10,7 +10,7 @@ using Xavalon.XamlStyler.Extensions;
 using Xavalon.XamlStyler.MarkupExtensions.Formatter;
 using Xavalon.XamlStyler.Model;
 using Xavalon.XamlStyler.Options;
-using Xavalon.XamlStyler.Parser;
+using Xavalon.XamlStyler.Parsing;
 using Xavalon.XamlStyler.Services;
 
 namespace Xavalon.XamlStyler.DocumentProcessors
@@ -30,7 +30,7 @@ namespace Xavalon.XamlStyler.DocumentProcessors
         public ElementDocumentProcessor(
             IStylerOptions options,
             AttributeInfoFactory attributeInfoFactory,
-            AttributeInfoFormatter attributeInfoFormatter, 
+            AttributeInfoFormatter attributeInfoFormatter,
             IndentService indentService,
             XmlEscapingService xmlEscapingService)
         {
@@ -98,8 +98,8 @@ namespace Xavalon.XamlStyler.DocumentProcessors
             {
                 bool isNoLineBreakElement = this.IsNoLineBreakElement(elementName);
                 this.ProcessAttributes(
-                    xmlReader, 
-                    output, 
+                    xmlReader,
+                    output,
                     elementProcessContext,
                     isNoLineBreakElement,
                     attributeIndetationString);
@@ -134,10 +134,10 @@ namespace Xavalon.XamlStyler.DocumentProcessors
         }
 
         private void ProcessAttributes(
-            XmlReader xmlReader, 
-            StringBuilder output, 
-            ElementProcessContext elementProcessContext, 
-            bool isNoLineBreakElement, 
+            XmlReader xmlReader,
+            StringBuilder output,
+            ElementProcessContext elementProcessContext,
+            bool isNoLineBreakElement,
             string attributeIndentationString)
         {
             var list = new List<AttributeInfo>(xmlReader.AttributeCount);
@@ -344,8 +344,8 @@ namespace Xavalon.XamlStyler.DocumentProcessors
         }
 
         private bool IsFirstLineAttribute(string attributeName)
-        {  
-            return this.firstLineAttributes.Contains(attributeName);  
+        {
+            return this.firstLineAttributes.Contains(attributeName);
         }
 
         private bool IsNoLineBreakElement(string elementName)
